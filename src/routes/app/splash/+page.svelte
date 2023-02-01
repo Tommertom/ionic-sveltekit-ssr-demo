@@ -4,10 +4,11 @@
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { is } from 'ionic-svelte';
+	import { Capacitor } from '@capacitor/core';
 
 	// just to be sure we do this in onMount
 	onMount(() => {
-		if (is('capacitor') && !is('pwa')) goto('/app/login');
+		if (Capacitor.isNativePlatform()) goto('/app/login');
 		else
 			setTimeout(() => {
 				goto('/app/login');
