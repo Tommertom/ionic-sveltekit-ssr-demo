@@ -41,8 +41,10 @@ const appinstalledHandler = (e: any) => {
 
 
 export function listenForBeforeInstallPrompt() {
-    window.addEventListener('beforeinstallprompt', beforeinstallpromptHandler);
-    window.addEventListener('appinstalled', appinstalledHandler);
+    if (window) {
+        window.addEventListener('beforeinstallprompt', beforeinstallpromptHandler);
+        window.addEventListener('appinstalled', appinstalledHandler);
+    } else console.warn('Cannot run listenForBeforeInstallPrompt in SSR mode');
 }
 
 
