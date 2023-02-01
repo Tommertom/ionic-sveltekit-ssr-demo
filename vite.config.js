@@ -29,7 +29,8 @@ const pwaConfiguration = {
 /** @type {import('vite').UserConfig} */
 const config = {
 	plugins: [sveltekit(),
-	SvelteKitPWA(pwaConfiguration)]
+	SvelteKitPWA(pwaConfiguration)
+	]
 };
 
 export default config;
