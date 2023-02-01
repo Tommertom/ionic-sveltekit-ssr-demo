@@ -1,5 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { SvelteKitPWA } from '@vite-pwa/sveltekit'
+import { VitePWA } from 'vite-plugin-pwa';
 
 const pwaManifest = {
 	name: "Ionic SSR demo",
@@ -18,8 +19,7 @@ const pwaManifest = {
 }
 
 const pwaConfiguration = {
-	srcDir: './build',
-	outDir: './build', // to ensure sw.js and workbox are in build - not according to docs, but works nevertheless? 
+	// outDir: './build', // to ensure sw.js and workbox are in build - not according to docs, but works nevertheless? 
 	includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'dist/*'],
 	base: '/',
 	scope: '/',
@@ -29,6 +29,7 @@ const pwaConfiguration = {
 /** @type {import('vite').UserConfig} */
 const config = {
 	plugins: [sveltekit(),
+	//	VitePWA(pwaConfiguration)
 	SvelteKitPWA(pwaConfiguration)
 	]
 };
