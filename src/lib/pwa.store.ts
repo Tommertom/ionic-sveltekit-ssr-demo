@@ -39,7 +39,6 @@ const appinstalledHandler = (e: any) => {
 
 }
 
-
 export function listenForBeforeInstallPrompt() {
     if (window) {
         window.addEventListener('beforeinstallprompt', beforeinstallpromptHandler);
