@@ -37,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@capacitor/android": "^4.6.2",
 		"@capacitor/core": "^4.6.2",
 		"@ionic/core": "^6.3.8",
 		"ionic-svelte": "^0.5.56"
