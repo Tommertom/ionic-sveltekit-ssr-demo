@@ -20,7 +20,7 @@
 	<br />
 	<br />
 	<br />
-	<h1 in:scale={{ duration: 1900, easing: elasticInOut }}>LOGO</h1>
+	<h1 class="center" in:scale={{ duration: 1900, easing: elasticInOut }}>LOGO</h1>
 	<br />
 	<br />
 	<div class="center" in:scale={{ delay: 400, duration: 1900, easing: elasticInOut }}>
