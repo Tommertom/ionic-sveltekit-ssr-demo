@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	import { is } from 'ionic-svelte';
 
-	// we know we are not in SSR, but just to be sure we do this in onMount
+	// just to be sure we do this in onMount
 	onMount(() => {
 		if (is('capacitor') && !is('pwa')) goto('/app/login');
 		else
