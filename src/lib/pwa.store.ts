@@ -6,7 +6,8 @@ export const appinstalled = writable<boolean | undefined>(undefined);
 
 export const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
     onRegistered(swr) {
-        console.log(`SW registered : ${swr}`);
+        console.log(`Service Worker registered registered `, swr);
+        listenForBeforeInstallPrompt();
     },
     onRegisterError(error) {
         console.log('SW registration error', error);
@@ -41,6 +42,7 @@ const appinstalledHandler = (e: any) => {
 
 export function listenForBeforeInstallPrompt() {
     if (window) {
+        console.log('Adding beforeinstallprompt listeners')
         window.addEventListener('beforeinstallprompt', beforeinstallpromptHandler);
         window.addEventListener('appinstalled', appinstalledHandler);
     } else console.warn('Cannot run listenForBeforeInstallPrompt in SSR mode');

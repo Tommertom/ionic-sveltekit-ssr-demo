@@ -20,6 +20,7 @@ const pwaManifest = {
 }
 
 const pwaConfiguration = {
+	outDir: './build',
 	// includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'dist/*'],
 	// base: '/',
 	// scope: '/',
