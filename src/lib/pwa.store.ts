@@ -26,18 +26,6 @@ const appinstalledHandler = (e: any) => {
     appinstalled.set(true);
     window.removeEventListener('beforeinstallprompt', beforeinstallpromptHandler);
     console.log(`'appinstalledHandler' event was fired.`, e);
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    if (getInstalledRelatedApps in navigator) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment 
-        //@ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        navigator.getInstalledRelatedApps().then((relatedApps: any) => {
-            console.log('Installed apps', relatedApps)
-        })
-    }
-
 }
 
 export function listenForBeforeInstallPrompt() {
