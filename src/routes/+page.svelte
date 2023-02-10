@@ -11,12 +11,15 @@
 	onMount(() => {
 		console.log('Are we native?', Capacitor.isNativePlatform());
 		if (Capacitor.isNativePlatform()) {
+			console.log('Found native shell, redirecting');
 			goto('/app/login');
 			return;
 		}
 
-		if (isPWA(window)) goto('/app/splash');
-		else showLanding = !isPWA(window);
+		if (isPWA(window)) {
+			console.log('In PWA - on wrong route - redirecting');
+			goto('/app/splash');
+		} else showLanding = !isPWA(window);
 	});
 </script>
 
