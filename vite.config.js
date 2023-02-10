@@ -9,6 +9,7 @@ const pwaManifest = {
 	description: "Ionic SSR demo",
 	theme_color: '#f27649',
 	orientation: "portrait",
+	start_url: "/index.html",
 	icons: [
 		{
 			"src": "/android-chrome-192x192.png",
