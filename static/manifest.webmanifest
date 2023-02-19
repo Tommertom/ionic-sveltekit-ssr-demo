@@ -1,0 +1,1 @@
+{"name":"Ionic SSR demo","short_name":"IonicSSRDemo","start_url":"/app/splash","display":"standalone","background_color":"#ffffff","lang":"en","scope":"./","description":"Ionic SSR demo","theme_color":"#f27649","orientation":"portrait","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png","purpose":"maskable any"}]}
