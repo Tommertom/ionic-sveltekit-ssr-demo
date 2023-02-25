@@ -1,5 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-// import { SvelteKitPWA } from '@vite-pwa/sveltekit';
+import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 import { VitePWA } from 'vite-plugin-pwa';
 
 
@@ -21,18 +21,18 @@ const pwaManifest = {
 }
 
 const pwaConfiguration = {
-	outDir: './build',
-	// includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'dist/*'],
-	// base: '/',
-	// scope: '/',
+	outDir: './static',
+	includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'dist/*'],
+	base: '/',
+	scope: '/',
 	manifest: pwaManifest
 }
 
 /** @type {import('vite').UserConfig} */
 const config = {
 	plugins: [sveltekit(),
-	VitePWA(pwaConfiguration)
-		//	SvelteKitPWA(pwaConfiguration)
+	//	VitePWA(pwaConfiguration)
+	SvelteKitPWA(pwaConfiguration)
 	]
 };
 
