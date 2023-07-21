@@ -7,7 +7,12 @@
 	setupIonicBase();
 
 	/* Import all components - or do partial loading - see below */
-	import 'ionic-svelte/components/all';
+	// import 'ionic-svelte/components/all';
+	// just a bit of optimization
+	import 'ionic-svelte/components/ion-app';
+	import 'ionic-svelte/components/ion-button';
+	import 'ionic-svelte/components/ion-content';
+	import 'ionic-svelte/components/ion-spinner';
 
 	/* Theme variables */
 	import '../../theme/variables.css';

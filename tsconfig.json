@@ -2,10 +2,11 @@
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
 		"typeRoots": [
-			"./node_modules/ionic-svelte"
+			"./node_modules"
 		],
 		"types": [
-			"ionic-svelte"
+			"ionic-svelte",
+			"vite-plugin-pwa/svelte"
 		],
 		"allowJs": true,
 		"checkJs": true,

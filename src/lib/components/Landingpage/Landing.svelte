@@ -1,10 +1,10 @@
 <script>
-	import FAQ from '$lib/components/Landingpage/FAQ.svelte';
-	import Features from '$lib/components/Landingpage/Features.svelte';
-	import Footer from '$lib/components/Landingpage/Footer.svelte';
-	import Hero from '$lib/components/Landingpage/Hero.svelte';
-	import HowItWorks from '$lib/components/Landingpage/HowItWorks.svelte';
-	import Pricing from '$lib/components/Landingpage/Pricing.svelte';
+	import FAQ from './FAQ.svelte';
+	import Features from './Features.svelte';
+	import Footer from './Footer.svelte';
+	import Hero from './Hero.svelte';
+	import HowItWorks from './HowItWorks.svelte';
+	import Pricing from './Pricing.svelte';
 </script>
 
 <!-- Hero -->
