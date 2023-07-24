@@ -1,12 +1,14 @@
-
 import { CapacitorConfig } from '@capacitor/cli';
 
-const appId = 'kitssrdemo.ionic.io';
+const livereload = process.argv.includes('-hmr');
+const appId = 'io.ionic.kitssrdemo';
 const appName = 'ionic-sveltekit-ssr-demo';
-const server = process.argv.includes('-hmr') ? {
-  'url': '192.168.153.1:5173',
-  'cleartext': true
-} : {};
+const server = (livereload) ? {
+    'url': '192.168.153.1:5173',
+    'cleartext': true
+  } : { 
+    androidScheme: 'https'
+  };
 const webDir = 'build';
 
 const config: CapacitorConfig = {
@@ -16,6 +18,6 @@ const config: CapacitorConfig = {
   server
 };
 
-if (process.argv.includes('-hmr')) console.log('WARNING: running capacitor with livereload config', config);
+if (livereload) console.log('WARNING: running capacitor with livereload config', config);
 
 export default config;

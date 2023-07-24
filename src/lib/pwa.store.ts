@@ -1,19 +1,12 @@
-import { useRegisterSW } from 'virtual:pwa-register/svelte';
 import { writable } from 'svelte/store';
 
-export const beforeinstallprompt = writable(undefined)
-export const appinstalled = writable<boolean | undefined>(undefined);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const beforeinstallprompt = writable<any>(undefined);
+export const appinstalled = writable<boolean>(false);
 
-export const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
-    onRegistered(swr) {
-        console.log(`Service Worker registered registered `, swr);
-        listenForBeforeInstallPrompt();
-    },
-    onRegisterError(error) {
-        console.log('SW registration error', error);
-    }
-});
-
+// does not get fired once the app is installed, even after reload
+// but event handler does get attached even if the app is already installed
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const beforeinstallpromptHandler = (e: any) => {
     e.preventDefault();
     beforeinstallprompt.set(e);
@@ -21,6 +14,9 @@ const beforeinstallpromptHandler = (e: any) => {
     console.log(`'beforeinstallpromptHandler' event was fired.`, e);
 };
 
+// 'appinstalled' is only triggered right after the installation of the app
+// it does not get fired if the app is already installed and reloaded
+// so using this attachment may not really make sense
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const appinstalledHandler = (e: any) => {
     appinstalled.set(true);
@@ -28,12 +24,10 @@ const appinstalledHandler = (e: any) => {
     console.log(`'appinstalledHandler' event was fired.`, e);
 }
 
-export function listenForBeforeInstallPrompt() {
+export const listenForBeforeInstallPrompt = () => {
     if (window) {
-        console.log('Adding beforeinstallprompt listeners')
         window.addEventListener('beforeinstallprompt', beforeinstallpromptHandler);
         window.addEventListener('appinstalled', appinstalledHandler);
+        console.log(`'beforeinstallprompt' listeners attached.`)
     } else console.warn('Cannot run listenForBeforeInstallPrompt in SSR mode');
 }
-
-

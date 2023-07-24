@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import Landing from '$lib/components/Landingpage/Landing.svelte';
+	import Landing from '$lib/components/LandingPage/Landing.svelte';
 	import { onMount } from 'svelte';
 	import { Capacitor } from '@capacitor/core';
 

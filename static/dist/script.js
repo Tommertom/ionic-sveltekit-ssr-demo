@@ -1,6 +1,7 @@
 window.addEventListener("load", function () {
-  console.log(document.querySelector("#showMenu"));
-  document
+  console.log(document.querySelector("#showMenu")); // returns null
+  // these two elements do not exist in our app
+  /* document
     .querySelector("#showMenu")
     .addEventListener("click", function (event) {
       document.querySelector("#mobileNav").classList.remove("hidden");
@@ -10,7 +11,7 @@ window.addEventListener("load", function () {
     .querySelector("#hideMenu")
     .addEventListener("click", function (event) {
       document.querySelector("#mobileNav").classList.add("hidden");
-    });
+    }); */
 
   document.querySelectorAll("[toggleElement]").forEach((toggle) => {
     toggle.addEventListener("click", function (event) {

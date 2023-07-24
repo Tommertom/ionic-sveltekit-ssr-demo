@@ -1,13 +1,10 @@
 <script lang="ts">
 	import { beforeinstallprompt } from '$lib/pwa.store';
-	import { get } from 'svelte/store';
 	import { goto } from '$app/navigation';
 
 	function runInstallEvent() {
-		const deferredPrompt: any = get(beforeinstallprompt);
-		deferredPrompt.prompt();
-
-		deferredPrompt.userChoice.then(async (userChoice: { outcome: string; platform: string }) => {
+		$beforeinstallprompt.prompt();
+		$beforeinstallprompt.userChoice.then(async (userChoice: { outcome: string; platform: string }) => {
 			console.log('userChoice', userChoice);
 			const url = userChoice.outcome === 'accepted' ? '/app/splash' : '/app/install';
 			goto(url);
@@ -32,10 +29,8 @@
 	<br /><br />
 	A magic button will appear here if the browser supports beforeinstallprompt.
 	<br />
-	{#if $beforeinstallprompt !== undefined}
-		<ion-button on:keypress={runInstallEvent} on:click={runInstallEvent}
-			>You can install via button!</ion-button
-		>
+	{#if $beforeinstallprompt}
+		<ion-button on:keypress={runInstallEvent} on:click={runInstallEvent}>You can install via button!</ion-button>
 	{:else}
 		<ion-spinner />
 	{/if}
