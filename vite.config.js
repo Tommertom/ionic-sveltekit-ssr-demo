@@ -1,8 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { SvelteKitPWA } from '@vite-pwa/sveltekit';
-import { VitePWA } from 'vite-plugin-pwa';
 import mkcert from 'vite-plugin-mkcert';
-
 
 const pwaManifest = {
 	name: "Ionic SSR demo",
@@ -11,6 +9,9 @@ const pwaManifest = {
 	theme_color: '#f27649',
 	orientation: "portrait",
 	start_url: "/app/splash",
+	id: "/",
+    background_color: "#ffffff",
+    lang: "en",
 	icons: [
 		// The original 192x192 icon size was actually 512x512
 		{
@@ -42,14 +43,14 @@ const pwaConfiguration = {
 /** @type {import('vite').UserConfig} */
 const config = {
 	define: {
-		// we need it for 'workbox-precaching'
-		'process.env.NODE_ENV': '"production"'
+		'process.env.NODE_ENV': process.env.NODE_ENV === 'production' 
+		? '"production"'
+		: '"development"'
 	},
 	plugins: [
 		sveltekit(),
 		// a plugin for enabling provisional certificate for https preview server
 		mkcert(),
-		// VitePWA(pwaConfiguration)
 		SvelteKitPWA(pwaConfiguration)
 	],
 	// for service worker to work properly the PWA needs to be running on https protocol
