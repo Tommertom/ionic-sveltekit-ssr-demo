@@ -3,6 +3,7 @@
 	import './styles.css';
 	import { listenForBeforeInstallPrompt } from '$lib/pwa.store';
 	import { onMount } from 'svelte';
+	import { pwaInfo } from "virtual:pwa-info";
 
 	// we do implicit registration of service worker using the Readable API in pwa.store.ts
 
@@ -23,7 +24,16 @@
 		console.log(`Attaching 'beforeinstallprompt' listeners.`);
 		listenForBeforeInstallPrompt();
 	});
+
+	$: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : "";
 </script>
 
-<svelte:head />
+<svelte:head>
+	{@html webManifestLink}
+</svelte:head>
+
 <slot />
+
+{#await import('$lib/ReloadPrompt.svelte') then {default: ReloadPrompt}}
+  <ReloadPrompt />
+{/await}
